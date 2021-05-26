@@ -45,6 +45,46 @@ class Contact < ApplicationRecord
   # uniqueness 
   # class Account < ActiveRecord::Base
   #   validates :email, uniqueness: true
+#   allow_nil
+#   allow_blank
+#   message
+  # end
+  validates :first_name, :last_name, :age, :phone, :email, presence: true 
+  validates :email, uniqueness: true 
+  validates :age, numericality: { only_integer: true }
+
+  # Callback - trigger some logic or code base on action 
+  # before_validation
+  # after_validation
+  # around_validation
+  # before_save
+  # after_save
+  # around_save
+  # before_create
+  # after_create
+  # around_create 
+  # class CreditCard < ActiveRecord::Base
+  #   before_save :encrypt_card_number
+  #   private
+  #     def encrypt_card_number
+  #       self.card_number = bcrypt(self.card_number)
+  #     end
+  # end
+  # Model methods 
+  # Fat models skinny controllers- any logic wise would be in the model , 
+  # class methods 
+  # class Person < ActiveRecord::Base
+  #   # called on a class Person.by_first_name
+  #   def self.by_first_name
+  #     order(:first_name)
+  #   end
+  # end
+  # instance methods
+  # class Person < ActiveRecord::Base
+  #   # called on an instance @person.full_name
+  #   def full_name
+  #    "#{self.first_name} {self.last_name}"
+  #   end
   # end
 
 end
